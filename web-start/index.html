@@ -1,15 +1,15 @@
 <!doctype html>
 <!--
-  Copyright 2015 Google Inc. All rights reserved.
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-      https://www.apache.org/licenses/LICENSE-2.0
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License
+Copyright 2015 Google Inc. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+https://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License
 -->
 <html lang="en">
 <head>
@@ -17,7 +17,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Learn how to use the Firebase platform on the Web">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Friendly Chat</title>
+  <title>Trash map </title>
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
@@ -50,77 +50,98 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-  <!-- Header section containing logo -->
-  <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-      <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-        <h3><i class="material-icons">chat_bubble_outline</i> Friendly Chat</h3>
+
+
+
+    <!-- Header section containing logo -->
+    <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
+      <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+        <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+          <h3><i class="material-icons">chat_bubble_outline</i> Trash Talk</h3>
+        </div>
+
+
+        ----------------------------------------------------------
+        <style>
+        #map {
+          height: 600px;
+          width: 100%;
+        }
+        </style>
+
+        <div id="map"></div>
+        <script>
+        function initMap() {
+          var uluru = {lat: 42.36, lng: -71.12};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: uluru
+          });
+          var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+          });
+        }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdVaZQm-cCMMH2ch-BHpG0FvEhxXCM4Eo&callback=initMap">
+        </script>
+
+        --------------------------------------------------------------
+
+        <div id="user-container">
+          <div hidden id="user-pic"></div>
+          <div hidden id="user-name"></div>
+          <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+            Sign-out
+          </button>
+          <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+            <i class="material-icons">account_circle</i>Sign-in with Google
+          </button>
+        </div>
       </div>
-      <div id="user-container">
-        <div hidden id="user-pic"></div>
-        <div hidden id="user-name"></div>
-        <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-          Sign-out
-        </button>
-        <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-          <i class="material-icons">account_circle</i>Sign-in with Google
-        </button>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="mdl-layout__content mdl-color--grey-100">
-    <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
+    <main class="mdl-layout__content mdl-color--grey-100">
+      <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
 
-      <!-- Messages container -->
-      <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
-        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-          <div id="messages">
-            <span id="message-filler"></span>
-          </div>
-          <form id="message-form" action="#">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="message">
-              <label class="mdl-textfield__label" for="message">Message...</label>
+        <!-- Messages container -->
+        <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+          <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+            <div id="messages">
+              <span id="message-filler"></span>
             </div>
-            <button id="submit" disabled type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-              Send
-            </button>
-          </form>
-          <form id="image-form" action="#">
-            <input id="mediaCapture" type="file" accept="image/*,capture=camera">
-            <button id="submitImage" title="Add an image" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
-              <i class="material-icons">image</i>
-            </button>
-          </form>
+            <form id="message-form" action="#">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="message">
+                <label class="mdl-textfield__label" for="message">Message...</label>
+              </div>
+              <button id="submit" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                Send
+              </button>
+            </form>
+            <form id="image-form" action="#">
+              <input id="mediaCapture" type="file" accept="image/*,capture=camera">
+              <button id="submitImage" title="Add an image" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+                <i class="material-icons">image</i>
+              </button>
+            </form>
+          </div>
         </div>
+
+
+        <div id="nudge"></div>
       </div>
+    </main>
 
+    <!-- Import and configure the Firebase SDK -->
+    <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+    <!-- If you do not want to serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+    <script src="/__/firebase/3.8.0/firebase.js"></script>
+    <script src="/__/firebase/init.js"></script>
 
-      <div id="nudge">
-        <div id="nudgeTitle">Grant access to view trash location and image</div>
-        <div id="nudgeForm">
-          <button id="nudgeYes">Yes</button>
-          <button id="nudgeNo">No</button>
-        </div>
-      </div>
-
-      <div id="locationData">
-        <div id="startLat"></div>
-        <div id="startLon"></div>
-      </div>
-    </div>
-  </main>
-</div>
-
-<!-- Import and configure the Firebase SDK -->
-<!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
-<!-- If you do not want to serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
-<script src="/__/firebase/3.8.0/firebase.js"></script>
-<script src="/__/firebase/init.js"></script>
-
-<script src="scripts/main.js"></script>
-</body>
-</html>
+    <script src="scripts/main.js"></script>
+  </body>
+  </html>
