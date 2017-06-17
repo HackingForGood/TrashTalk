@@ -17,6 +17,7 @@
  'use strict';
 // Initializes FriendlyChat.
 function FriendlyChat() {
+  this.database;
   this.checkSetup();
 
   // Shortcuts to DOM Elements.
@@ -209,7 +210,7 @@ FriendlyChat.prototype.onAuthStateChanged = function(user) {
 // Returns true if user is signed-in. Otherwise false and displays a message.
 FriendlyChat.prototype.checkSignedInWithMessage = function() {
   // Return true if the user is signed in Firebase
-  if (this.auth.currentUser) {
+  if (true) {
     return true;
   }
   // Display a message to the user using a Toast.
@@ -318,6 +319,104 @@ FriendlyChat.prototype.checkSetup = function() {
         'Make sure you go through the codelab setup instructions and make ' +
         'sure you are running the codelab using `firebase serve`');
   }
+};
+
+//Location Tracking for Trash Report Button
+var submitButton = document.getElementById('submit');
+var latitude = 0;
+var longitude = 0;
+submitButton.onclick = function() {
+  var startPos;
+  var geoOptions = {
+    enableHighAccuracy: true,
+    timeout: 10 * 1000
+  }
+  var nudge = document.getElementById("nudge");
+
+  var showNudgeBanner = function() {
+    nudge.style.display = "block";
+  };
+
+  var hideNudgeBanner = function() {
+    nudge.style.display = "none";
+  };
+
+  var nudgeTimeoutId = setTimeout(showNudgeBanner, 5000);
+
+  var geoSuccess = function(position) {
+
+    hideNudgeBanner();
+    // We have the location, don't display banner
+    clearTimeout(nudgeTimeoutId);
+
+    // Do magic with location
+    startPos = position;
+    latitude = startPos.coords.latitude;
+    longitude = startPos.coords.longitude;
+    console.log(latitude,longitude);
+    FriendlyChat.prototype.saveLocation(latitude,longitude);
+  };
+  var geoError = function(error) {
+    switch(error.code) {
+      case error.TIMEOUT:
+        // The user didn't accept the callout
+        showNudgeBanner();
+        console.log("timeout");
+        break;
+      case 1:
+        //permission denied
+        hideNudgeBanner();
+        break;
+    }
+    console.log('Error occurred. Error code: ' + error.code);
+      // error.code can be:
+      //   0: unknown error
+      //   1: permission denied
+      //   2: position unavailable (error response from location provider)
+      //   3: timed out
+  };
+
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+};
+
+
+// Saves a new location on the Firebase DB.
+FriendlyChat.prototype.saveLocation = function(data) {
+  data.defaultPrevented;
+    //var currentUser = this.auth.currentUser;
+    // Add a new message entry to the Firebase Database.
+    this.database.ref('locations').push({
+      name: "anonymous",
+      "latitude": data.latitude,
+      "longitude": data.longitude,
+      imgURL: currentUser.photoURL || '/images/profile_placeholder.png'
+    }).then(function() {
+      // Clear message text field and SEND button state.
+      FriendlyChat.resetMaterialTextfield(this.messageInput);
+      this.toggleButton();
+    }.bind(this)).catch(function(error) {
+      console.error('Error writing new location to Firebase Database', error);
+    });
+
+};
+
+// Loads chat messages history and listens for upcoming ones.
+FriendlyChat.prototype.loadLocations = function() {
+  // Reference to the /messages/ database path.
+  this.locationsRef = this.database.ref('locations/');
+  // Make sure we remove all previous listeners.
+  this.locationsRef.off();
+
+  // Loads the last 12 messages and listen for new ones.
+  var setPin = function(data) {
+    var val = data.val();
+    var marker = new google.maps.Marker({
+      position: {lat:val.latitude, lng:val.longitude},
+      map:map
+    });
+  }.bind(this);
+  this.Ref.on('child_added', setPin);
+  this.locationsRef.on('child_changed', setPin);
 };
 
 window.onload = function() {

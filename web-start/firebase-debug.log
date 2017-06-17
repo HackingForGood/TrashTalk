@@ -1,0 +1,96 @@
+[debug] [2017-06-17T19:32:48.888Z] ----------------------------------------------------------------------
+[debug] [2017-06-17T19:32:48.890Z] Command:      /usr/bin/nodejs /usr/local/bin/firebase deploy
+[debug] [2017-06-17T19:32:48.890Z] CLI Version:  3.9.1
+[debug] [2017-06-17T19:32:48.890Z] Platform:     linux
+[debug] [2017-06-17T19:32:48.890Z] Node Version: v6.11.0
+[debug] [2017-06-17T19:32:48.890Z] Time:         Sat Jun 17 2017 15:32:48 GMT-0400 (EDT)
+[debug] [2017-06-17T19:32:48.890Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-06-17T19:32:48.900Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-06-17T19:32:48.900Z] > authorizing via signed-in user
+[debug] [2017-06-17T19:32:48.902Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-06-17T19:32:48.902Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/UqJQnXiZ08G_reJ7zz8MNOASaPxCwbaCWXeAmbp5ofA',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jun 17 2017 15:32:48 GMT-0400 (EDT)
+[debug] [2017-06-17T19:32:53.386Z] ----------------------------------------------------------------------
+[debug] [2017-06-17T19:32:53.389Z] Command:      /usr/bin/nodejs /usr/local/bin/firebase serve
+[debug] [2017-06-17T19:32:53.389Z] CLI Version:  3.9.1
+[debug] [2017-06-17T19:32:53.389Z] Platform:     linux
+[debug] [2017-06-17T19:32:53.389Z] Node Version: v6.11.0
+[debug] [2017-06-17T19:32:53.389Z] Time:         Sat Jun 17 2017 15:32:53 GMT-0400 (EDT)
+[debug] [2017-06-17T19:32:53.389Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-06-17T19:32:53.400Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-06-17T19:32:53.400Z] > authorizing via signed-in user
+[debug] [2017-06-17T19:32:53.402Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-06-17T19:32:53.402Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/UqJQnXiZ08G_reJ7zz8MNOASaPxCwbaCWXeAmbp5ofA',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jun 17 2017 15:32:53 GMT-0400 (EDT)
+[debug] [2017-06-17T19:33:01.661Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T19:33:01.678Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/friendlychat-7e096  
+ Sat Jun 17 2017 15:33:01 GMT-0400 (EDT)
+[debug] [2017-06-17T19:33:02.081Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T19:33:02.082Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/friendlychat-7e096/tokens  
+ Sat Jun 17 2017 15:33:02 GMT-0400 (EDT)
+[debug] [2017-06-17T19:33:02.378Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/echo/Projects/find-that-trash/web-start'...
+[info] 
+[debug] [2017-06-17T19:33:02.394Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/friendlychat-7e096  
+ Sat Jun 17 2017 15:33:02 GMT-0400 (EDT)
+[debug] [2017-06-17T19:33:02.762Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T19:33:02.765Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/97024530495/clients/_:getWebAppConfig  
+ Sat Jun 17 2017 15:33:02 GMT-0400 (EDT)
+[debug] [2017-06-17T19:33:10.798Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[debug] [2017-06-17T19:33:10.820Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/friendlychat-7e096  
+ Sat Jun 17 2017 15:33:10 GMT-0400 (EDT)
+[debug] [2017-06-17T19:33:11.009Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T19:33:11.011Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/97024530495/clients/_:getWebAppConfig  
+ Sat Jun 17 2017 15:33:11 GMT-0400 (EDT)
+[debug] [2017-06-17T19:33:11.429Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5004
+
+[debug] [2017-06-17T21:18:07.724Z] ----------------------------------------------------------------------
+[debug] [2017-06-17T21:18:07.726Z] Command:      /usr/bin/nodejs /usr/local/bin/firebase serve
+[debug] [2017-06-17T21:18:07.727Z] CLI Version:  3.9.1
+[debug] [2017-06-17T21:18:07.727Z] Platform:     linux
+[debug] [2017-06-17T21:18:07.727Z] Node Version: v6.11.0
+[debug] [2017-06-17T21:18:07.727Z] Time:         Sat Jun 17 2017 17:18:07 GMT-0400 (EDT)
+[debug] [2017-06-17T21:18:07.727Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-06-17T21:18:07.736Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-06-17T21:18:07.736Z] > authorizing via signed-in user
+[debug] [2017-06-17T21:18:07.738Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-06-17T21:18:07.738Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/UqJQnXiZ08G_reJ7zz8MNOASaPxCwbaCWXeAmbp5ofA',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jun 17 2017 17:18:07 GMT-0400 (EDT)
+[debug] [2017-06-17T21:18:11.966Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T21:18:11.977Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/friendlychat-7e096  
+ Sat Jun 17 2017 17:18:11 GMT-0400 (EDT)
+[debug] [2017-06-17T21:18:12.495Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T21:18:12.498Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/friendlychat-7e096/tokens  
+ Sat Jun 17 2017 17:18:12 GMT-0400 (EDT)
+[debug] [2017-06-17T21:18:20.218Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/echo/Projects/find-that-trash/web-start'...
+[info] 
+[debug] [2017-06-17T21:18:20.225Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/friendlychat-7e096  
+ Sat Jun 17 2017 17:18:20 GMT-0400 (EDT)
+[debug] [2017-06-17T21:18:20.637Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T21:18:20.639Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/97024530495/clients/_:getWebAppConfig  
+ Sat Jun 17 2017 17:18:20 GMT-0400 (EDT)
+[debug] [2017-06-17T21:18:21.053Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
+
